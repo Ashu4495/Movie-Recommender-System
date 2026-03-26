@@ -1,0 +1,11 @@
+similarity.pkl
+
+.ipynb_checkpoints/
+.virtual_documents/
+
+.idea/
+local/.idea/
+
+.venv/
+venv/
+
