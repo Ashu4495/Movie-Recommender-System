@@ -154,13 +154,14 @@ def recommend(movie):
 @st.cache_resource
 def load_data():
     try:
-        movies_dict = pickle.load(open('movies_dict.pkl','rb'))
+        movies_dict = pickle.load(open('models/movies_dict.pkl','rb'))
         movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.load(open('similarity.pkl','rb'))
+        similarity = pickle.load(open('models/similarity.pkl','rb'))
     except FileNotFoundError:
-        movies_dict = pickle.load(open('local/movies_dict.pkl','rb'))
+        # Fallback for local development if running from within app folder
+        movies_dict = pickle.load(open('../models/movies_dict.pkl','rb'))
         movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.load(open('local/similarity.pkl','rb'))
+        similarity = pickle.load(open('../models/similarity.pkl','rb'))
     return movies, similarity
 
 movies, similarity = load_data()

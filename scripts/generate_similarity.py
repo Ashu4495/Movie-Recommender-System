@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import ast
@@ -6,9 +7,13 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 
+# Define directory constants
+DATA_DIR = 'data'
+MODELS_DIR = 'models'
+
 # Load datasets
-movies = pd.read_csv('tmdb_5000_movies.csv')
-credits = pd.read_csv('tmdb_5000_credits.csv')
+movies = pd.read_csv(os.path.join(DATA_DIR, 'tmdb_5000_movies.csv'))
+credits = pd.read_csv(os.path.join(DATA_DIR, 'tmdb_5000_credits.csv'))
 
 # Merge
 movies = movies.merge(credits, on='title')
@@ -83,9 +88,13 @@ vectors = cv.fit_transform(new_df['tags']).toarray()
 # Similarity
 similarity = cosine_similarity(vectors)
 
-# Pickle
-pickle.dump(similarity, open('similarity.pkl', 'wb'))
-pickle.dump(new_df.to_dict(), open('movies_dict.pkl', 'wb'))
-pickle.dump(new_df, open('movies.pkl', 'wb'))
+# Create models directory if it doesn't exist
+if not os.path.exists(MODELS_DIR):
+    os.makedirs(MODELS_DIR)
 
-print("Generated similarity.pkl, movies_dict.pkl, and movies.pkl successfully!")
+# Pickle
+pickle.dump(similarity, open(os.path.join(MODELS_DIR, 'similarity.pkl'), 'wb'))
+pickle.dump(new_df.to_dict(), open(os.path.join(MODELS_DIR, 'movies_dict.pkl'), 'wb'))
+pickle.dump(new_df, open(os.path.join(MODELS_DIR, 'movies.pkl'), 'wb'))
+
+print(f"Generated similarity.pkl, movies_dict.pkl, and movies.pkl in {MODELS_DIR} successfully!")

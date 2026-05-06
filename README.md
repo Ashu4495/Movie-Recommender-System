@@ -6,6 +6,15 @@
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="assets/screenshot.png" alt="CineSphere UI" width="48%">
+  <img src="assets/demo.png" alt="Recommendation Results" width="48%">
+</div>
+
+---
+
 ## ✨ Features
 
 - **🎯 Precision Recommendations**: Powered by Cosine Similarity and Count Vectorization on the TMDB 5000 dataset.
@@ -44,14 +53,14 @@ pip install -r requirements.txt
 The project requires precomputed similarity files. Run the generation script:
 
 ```bash
-python generate_similarity.py
+python scripts/generate_similarity.py
 ```
 
 ### 4. Run the Application
 Start the Streamlit server:
 
 ```bash
-streamlit run local/main.py
+streamlit run app/main.py
 ```
 
 ---
