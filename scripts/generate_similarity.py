@@ -95,6 +95,5 @@ if not os.path.exists(MODELS_DIR):
 # Pickle
 pickle.dump(similarity, open(os.path.join(MODELS_DIR, 'similarity.pkl'), 'wb'))
 pickle.dump(new_df.to_dict(), open(os.path.join(MODELS_DIR, 'movies_dict.pkl'), 'wb'))
-pickle.dump(new_df, open(os.path.join(MODELS_DIR, 'movies.pkl'), 'wb'))
 
-print(f"Generated similarity.pkl, movies_dict.pkl, and movies.pkl in {MODELS_DIR} successfully!")
+print(f"Generated similarity.pkl and movies_dict.pkl in {MODELS_DIR} successfully!")

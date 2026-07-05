@@ -2,12 +2,9 @@ similarity.pkl
 movies.pkl
 movies_dict.pkl
 
-.ipynb_checkpoints/
 .virtual_documents/
 
 .idea/
 local/.idea/
 
-.venv/
-venv/
-
+movie.env/
