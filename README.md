@@ -6,7 +6,6 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movie-recommender-system-a.streamlit.app/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
 [![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange.svg)](https://scikit-learn.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1000" alt="CineSphere Header" style="border-radius: 15px; margin-top: 15px; margin-bottom: 15px;">
 
@@ -28,7 +27,7 @@ It's not just a script; it's a fully interactive web application wrapped in a pr
 
 ## ⚡ Features
 
-- **🧠 Smart AI Engine**: Uses Natural Language Processing (NLP) and Cosine Similarity to find the 5 closest movie matches out of a massive 5,000-dimensional vector space.
+- **🧠 Smart AI Engine**: Uses machine learning and Cosine Similarity to find the 5 closest movie matches out of a massive 5,000-dimensional vector space.
 - **🖼️ Real-Time Posters**: Automatically fetches high-quality movie posters on the fly using the TMDB API.
 - **🚀 Cloud-Optimized**: Implements `.pbz2` compression to handle massive similarity matrices seamlessly on cloud platforms like Streamlit Community Cloud.
 - **✨ Premium Design**: A custom CSS dark-mode interface designed to feel like a high-end streaming service.
@@ -40,7 +39,6 @@ It's not just a script; it's a fully interactive web application wrapped in a pr
 *   **Frontend**: [Streamlit](https://streamlit.io/)
 *   **Data Manipulation**: [Pandas](https://pandas.pydata.org/) & [NumPy](https://numpy.org/)
 *   **Machine Learning**: [Scikit-Learn](https://scikit-learn.org/) *(CountVectorizer, Cosine Similarity)*
-*   **NLP**: [NLTK](https://www.nltk.org/) *(Porter Stemmer)*
 *   **Data Source**: [TMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata) & [TMDB API](https://developer.themoviedb.org/docs)
 
 ---
@@ -49,7 +47,7 @@ It's not just a script; it's a fully interactive web application wrapped in a pr
 
 1.  **Data Ingestion**: We merge movie metadata with cast & crew credits.
 2.  **Feature Engineering**: We extract the top 3 actors, the director, genres, and descriptive keywords.
-3.  **NLP Pipeline**: Everything is combined into a massive text "tag". We remove stop words and apply *Stemming* (e.g., turning "action", "actions", "actionable" all into "action").
+3.  **Text Processing**: Everything is combined into a massive text "tag". We remove common stop words and normalize the text.
 4.  **Vectorization**: The tags are fed into a `CountVectorizer` to create a 5000-feature mathematical representation of every movie.
 5.  **Distance Calculation**: We calculate the *Cosine Similarity* (the angle between vectors) to find which movies are mathematically closest to each other.
 
