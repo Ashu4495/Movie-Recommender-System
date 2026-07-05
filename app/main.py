@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import bz2
 
 # Set page config for a more professional look
 st.set_page_config(
@@ -156,12 +157,12 @@ def load_data():
     try:
         movies_dict = pickle.load(open('models/movies_dict.pkl','rb'))
         movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.load(open('models/similarity.pkl','rb'))
+        similarity = pickle.loads(bz2.BZ2File('models/similarity.pbz2', 'rb').read())
     except FileNotFoundError:
         # Fallback for local development if running from within app folder
         movies_dict = pickle.load(open('../models/movies_dict.pkl','rb'))
         movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.load(open('../models/similarity.pkl','rb'))
+        similarity = pickle.loads(bz2.BZ2File('../models/similarity.pbz2', 'rb').read())
     return movies, similarity
 
 movies, similarity = load_data()
