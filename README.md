@@ -2,6 +2,8 @@
 
 ![CineSphere Header](https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=1200)
 
+### 🌐 [Try the Live App Here!](https://movie-recommender-system-a.streamlit.app/)
+
 **CineSphere** is a premium, AI-powered movie recommendation engine that helps you discover your next favorite film. Using advanced Natural Language Processing (NLP) and machine learning, it analyzes movie tags, genres, and overviews to find hidden gems similar to the ones you already love.
 
 ---
