@@ -3,6 +3,7 @@ import pickle
 import pandas as pd
 import requests
 import bz2
+import os
 
 # Set page config for a more professional look
 st.set_page_config(
@@ -154,15 +155,10 @@ def recommend(movie):
 # Load data
 @st.cache_resource
 def load_data():
-    try:
-        movies_dict = pickle.load(open('models/movies_dict.pkl','rb'))
-        movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.loads(bz2.BZ2File('models/similarity.pbz2', 'rb').read())
-    except FileNotFoundError:
-        # Fallback for local development if running from within app folder
-        movies_dict = pickle.load(open('../models/movies_dict.pkl','rb'))
-        movies = pd.DataFrame.from_dict(movies_dict)
-        similarity = pickle.loads(bz2.BZ2File('../models/similarity.pbz2', 'rb').read())
+    base_path = 'models' if os.path.exists('models/movies_dict.pkl') else '../models'
+    movies_dict = pickle.load(open(f'{base_path}/movies_dict.pkl','rb'))
+    movies = pd.DataFrame.from_dict(movies_dict)
+    similarity = pickle.loads(bz2.BZ2File(f'{base_path}/similarity.pbz2', 'rb').read())
     return movies, similarity
 
 movies, similarity = load_data()

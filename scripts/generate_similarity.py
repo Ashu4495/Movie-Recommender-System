@@ -110,29 +110,16 @@ movies.dropna(inplace=True)
 
 # Helper functions
 def convert(obj):
-    L = []
-    for i in ast.literal_eval(obj):
-        L.append(i['name'])
-    return L
+    return [i['name'] for i in ast.literal_eval(obj)]
 
 def convert3(obj):
-    L = []
-    counter = 0
-    for i in ast.literal_eval(obj):
-        if counter != 3:
-            L.append(i['name'])
-            counter += 1
-        else:
-            break
-    return L
+    return [i['name'] for i in ast.literal_eval(obj)][:3]
 
 def fetch_director(obj):
-    L = []
     for i in ast.literal_eval(obj):
         if i['job'] == 'Director':
-            L.append(i['name'])
-            break
-    return L
+            return [i['name']]
+    return []
 
 # Preprocessing
 movies['genres'] = movies['genres'].apply(convert)
